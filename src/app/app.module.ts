@@ -10,9 +10,10 @@ import { MaterialModule } from './modules/material.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { galleryReducer } from './store/gallery.reducer';
 import { GalleryEffects } from './store/gallery.effects';
+import { CatsApiInterceptor } from './shared/interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,11 @@ import { GalleryEffects } from './store/gallery.effects';
     StoreModule.forRoot({ cats: galleryReducer}),
     EffectsModule.forRoot([GalleryEffects])
   ],
-  providers: [],
+  providers: [ {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CatsApiInterceptor,
+      multi: true,
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
