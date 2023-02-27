@@ -1,0 +1,17 @@
+<mat-card class="gallery">
+    <mat-card-content class="upper-bar">
+        <app-search-bar></app-search-bar>
+    </mat-card-content>
+    <mat-card-content>
+        <mat-grid-list gutterSize="5px" cols="4">
+            <mat-grid-tile class="tile" *ngFor="let item of storedCats$ | async">
+               
+                <div class="thumb">
+                    <img class="image" [src]="item.url">
+                </div>
+
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+    <p>{{loading$ | async}}</p>
+</mat-card>
