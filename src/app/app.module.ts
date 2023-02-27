@@ -28,7 +28,7 @@ import { GalleryEffects } from './store/gallery.effects';
     HttpClientModule,
     MaterialModule,
     StoreModule.forRoot({ cats: galleryReducer}),
-    EffectsModule.forRoot([GalleryEffects]),
+    EffectsModule.forRoot([GalleryEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
