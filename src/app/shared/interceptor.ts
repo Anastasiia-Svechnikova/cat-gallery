@@ -24,13 +24,11 @@ export class CatsApiInterceptor implements HttpInterceptor {
     });
 
     return next.handle(apiReq).pipe(
-      tap(
-        (err) => {
-          if (err instanceof HttpErrorResponse) {
-             console.log('Server response error');
-          }
+      tap((err) => {
+        if (err instanceof HttpErrorResponse) {
+          console.log('Server response error');
         }
-      )
+      })
     );
   }
 }

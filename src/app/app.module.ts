@@ -16,11 +16,7 @@ import { GalleryEffects } from './store/gallery.effects';
 import { CatsApiInterceptor } from './shared/interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GalleryComponent,
-    SearchBarComponent
-  ],
+  declarations: [AppComponent, GalleryComponent, SearchBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,14 +24,16 @@ import { CatsApiInterceptor } from './shared/interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    StoreModule.forRoot({ cats: galleryReducer}),
-    EffectsModule.forRoot([GalleryEffects])
+    StoreModule.forRoot({ cats: galleryReducer }),
+    EffectsModule.forRoot([GalleryEffects]),
   ],
-  providers: [ {
+  providers: [
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: CatsApiInterceptor,
       multi: true,
-    },],
-  bootstrap: [AppComponent]
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

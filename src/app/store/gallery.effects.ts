@@ -18,12 +18,15 @@ export class GalleryEffects {
         return this.httpService.getImages(filters).pipe(
           map((cats) => catsApiActions.loadedImages({ cats })),
           catchError((error) => {
-            return  of(catsApiActions.loadedError(error))
+            return of(catsApiActions.loadedError(error));
           })
         );
       })
     )
   );
 
-  constructor(private actions: Actions, private httpService: GalleryApiService) {}
+  constructor(
+    private actions: Actions,
+    private httpService: GalleryApiService
+  ) {}
 }

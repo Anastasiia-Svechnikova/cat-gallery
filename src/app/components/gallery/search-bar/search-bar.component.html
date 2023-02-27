@@ -1,21 +1,20 @@
 <div class="wrapper">
-    <form class="form" [formGroup]="searchForm">
-        <mat-form-field class="select" appearance="outline" floatLabel="auto">
-            <mat-select formControlName="breed">
-
-                <mat-option *ngFor="let option of breeds" [value]="option">{{
-                    option.name| titlecase
-                    }}</mat-option>
-            </mat-select>
-            <mat-label>Breed</mat-label>
-        </mat-form-field>
-        <mat-form-field class="select" appearance="outline" floatLabel="auto">
-            <mat-select formControlName="limit">
-                <mat-option *ngFor="let option of amount" [value]="option">{{
-                    option | titlecase
-                    }}</mat-option>
-            </mat-select>
-            <mat-label>Amount</mat-label>
-        </mat-form-field>
-    </form>
+  <form class="form" [formGroup]="searchForm">
+    <mat-form-field class="select" appearance="outline" floatLabel="auto">
+      <mat-select formControlName="breed">
+        <mat-option *ngFor="let option of breeds" [value]="option">
+          {{ option.name | titlecase }}
+        </mat-option>
+      </mat-select>
+      <mat-label>Breed</mat-label>
+    </mat-form-field>
+    <mat-form-field class="select" appearance="outline" floatLabel="auto">
+      <mat-select formControlName="limit">
+        <mat-option *ngFor="let option of amount" [value]="option">
+          {{ option | titlecase }}
+        </mat-option>
+      </mat-select>
+      <mat-label>Amount</mat-label>
+    </mat-form-field>
+  </form>
 </div>

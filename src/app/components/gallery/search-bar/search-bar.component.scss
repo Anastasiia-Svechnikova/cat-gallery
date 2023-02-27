@@ -1,19 +1,18 @@
 .wrapper {
-    width: 100%;
+  width: 100%;
 }
-
 .form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  gap: 20px;
 }
-
 ::ng-deep .mdc-text-field {
-    border-color: black;
+  border-color: black;
 }
-
-::ng-deep .cdk-overlay-pane:not(.mat-mdc-select-panel-above) .mdc-menu-surface.mat-mdc-select-panel {
-    background-color: rgb(135, 133, 133);
+::ng-deep
+  .cdk-overlay-pane:not(.mat-mdc-select-panel-above)
+  .mdc-menu-surface.mat-mdc-select-panel {
+  background-color: rgb(135, 133, 133);
 }
