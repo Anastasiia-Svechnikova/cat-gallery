@@ -7,6 +7,7 @@ export const catsApiActions = createActionGroup({
     events: {
         'Load images': emptyProps(),
         'Loaded images': props<{ cats: ReadonlyArray<ICat> }>(),
-        'Set Filter': props<{breed: string, limit: string }>()
+        'Set Filter': props<{ breed: string, limit: string }>(),
+        'Loaded Error':  props<{ error: any }>(),
     }
 })

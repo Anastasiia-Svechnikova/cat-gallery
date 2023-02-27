@@ -34,7 +34,8 @@ export class SearchBarComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.breeds = this.route.snapshot.data['breeds']
+    this.breeds = [ { id: '', name: 'all' }, ...this.route.snapshot.data['breeds']]
+
 
     this.formSubscription = this.searchForm.valueChanges.subscribe((value) => {
       const payload = { ...value, breed: value.breed.id };

@@ -3,6 +3,10 @@
     <app-search-bar></app-search-bar>
   </mat-card-content>
   <mat-spinner class="spinner" *ngIf="loading$ | async; else galleryList"></mat-spinner>
+
+      <mat-card-content  *ngIf="error$ | async">
+        <p>Oops, something went wrong... Try again, please!</p>
+      </mat-card-content>
   <ng-template #galleryList>
     <mat-card-content>
       <mat-grid-list gutterSize="5px" cols="4">

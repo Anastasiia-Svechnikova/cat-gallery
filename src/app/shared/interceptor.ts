@@ -4,7 +4,6 @@ import {
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
-  HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
@@ -18,17 +17,14 @@ export class CatsApiInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const authReq = req.clone({
+    const apiReq = req.clone({
       setParams: {
         api_key: this.apiKey,
       },
     });
 
-    return next.handle(authReq).pipe(
+    return next.handle(apiReq).pipe(
       tap(
-        (event) => {
-          if (event instanceof HttpResponse) console.log('Server response');
-        },
         (err) => {
           if (err instanceof HttpErrorResponse) {
              console.log('Server response error');

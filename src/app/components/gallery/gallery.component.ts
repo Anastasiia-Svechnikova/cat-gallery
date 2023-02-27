@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { catsApiActions } from 'src/app/store/gallery.actions';
-import { selectCats, selectLoading } from 'src/app/store/gallery.selectors';
+import { selectCats, selectError, selectLoading } from 'src/app/store/gallery.selectors';
 
 
 import { GalleryApiService } from './gallery-api.service';
@@ -15,6 +15,8 @@ export class GalleryComponent implements OnInit {
 
   storedCats$ = this.store.select(selectCats)
   loading$ = this.store.select(selectLoading)
+  error$ = this.store.select(selectError)
+  
   constructor(public httpService: GalleryApiService, private store: Store){}
 
   ngOnInit() { 
