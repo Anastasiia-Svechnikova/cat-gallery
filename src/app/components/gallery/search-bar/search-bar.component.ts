@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+
 import { catsApiActions } from 'src/app/store/gallery.actions';
 import { GalleryApiService } from '../gallery-api.service';
 import { IBreed } from '../gallery.model';

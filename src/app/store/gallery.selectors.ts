@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
+
 import { InitialStateInterface } from '../components/gallery/gallery.model';
 
 const selectCatsFeature = createFeatureSelector<InitialStateInterface>('cats');

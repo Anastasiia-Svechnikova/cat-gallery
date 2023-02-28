@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { catsApiActions } from 'src/app/store/gallery.actions';
 import {
   selectCats,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
+
 import { GalleryApiService } from './gallery-api.service';
 import { IBreed } from './gallery.model';
 

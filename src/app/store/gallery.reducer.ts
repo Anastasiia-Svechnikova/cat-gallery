@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { InitialStateInterface } from '../components/gallery/gallery.model';
 
+import { InitialStateInterface } from '../components/gallery/gallery.model';
 import { catsApiActions } from './gallery.actions';
 
 
