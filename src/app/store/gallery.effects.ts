@@ -17,11 +17,16 @@ export class GalleryEffects {
             : {};
         return this.httpService.getImages(filters).pipe(
           map((cats) => catsApiActions.loadedImages({ cats })),
-          catchError(() => of({ type: '[Gallery] Images Loaded Error' }))
+          catchError((error) => {
+            return of(catsApiActions.loadedError(error));
+          })
         );
       })
     )
   );
 
-  constructor(private actions: Actions, private httpService: GalleryApiService) {}
+  constructor(
+    private actions: Actions,
+    private httpService: GalleryApiService
+  ) {}
 }
