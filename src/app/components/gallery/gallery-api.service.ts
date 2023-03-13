@@ -31,4 +31,5 @@ export class GalleryApiService {
       .get<ApiResponseBreeds>(`${this.url}breeds`)
       .pipe(map((data) => data.map(({ id, name }) => ({ id, name }))));
   }
+
 }

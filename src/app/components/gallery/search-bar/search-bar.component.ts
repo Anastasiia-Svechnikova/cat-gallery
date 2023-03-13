@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs';
+import { UnSubscriber } from 'src/app/shared/unsubscriber';
 
 import { catsApiActions } from 'src/app/store/gallery.actions';
 import { GalleryApiService } from '../gallery-api.service';
@@ -13,10 +14,12 @@ import { IBreed } from '../gallery.model';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
 })
-export class SearchBarComponent implements OnInit, OnDestroy {
+export class SearchBarComponent
+  extends UnSubscriber
+  implements OnInit, OnDestroy
+{
   breeds: IBreed[] = [];
   searchForm: FormGroup;
-  formSubscription!: Subscription;
 
   amount = ['10', '20', '30'];
 
@@ -26,6 +29,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     private store: Store,
     private route: ActivatedRoute
   ) {
+    super();
     this.searchForm = this.fb.group({
       breed: 'all',
       limit: '10',
@@ -36,12 +40,11 @@ export class SearchBarComponent implements OnInit, OnDestroy {
       { id: '', name: 'all' },
       ...this.route.snapshot.data['breeds'],
     ];
-    this.formSubscription = this.searchForm.valueChanges.subscribe((value) => {
-      const payload = { ...value, breed: value.breed.id };
-      this.store.dispatch(catsApiActions.setFilter(payload));
-    });
-  }
-  ngOnDestroy(): void {
-    this.formSubscription.unsubscribe();
+    this.searchForm.valueChanges
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((value) => {
+        const payload = { ...value, breed: value.breed.id };
+        this.store.dispatch(catsApiActions.setFilter(payload));
+      });
   }
 }

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BreedsResolver } from './components/gallery/breeds.resolver';
 import { GalleryComponent } from './components/gallery/gallery.component';
 
+
 const routes: Routes = [
   {
     path: '',

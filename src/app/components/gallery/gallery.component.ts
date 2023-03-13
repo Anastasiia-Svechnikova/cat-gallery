@@ -20,7 +20,7 @@ export class GalleryComponent implements OnInit {
 
   constructor(private store: Store) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.store.dispatch(catsApiActions.loadImages());
   }
 }

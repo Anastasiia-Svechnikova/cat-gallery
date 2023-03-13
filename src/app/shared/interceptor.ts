@@ -13,10 +13,10 @@ import { environment } from 'src/environments/environment.development';
 export class CatsApiInterceptor implements HttpInterceptor {
   apiKey = environment.apiKey;
 
-  intercept(
-    req: HttpRequest<any>,
+  intercept<T, U>(
+    req: HttpRequest<T>,
     next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  ): Observable<HttpEvent<U>> {
     const apiReq = req.clone({
       setParams: {
         api_key: this.apiKey,
